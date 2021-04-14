@@ -1,11 +1,7 @@
 from __future__ import absolute_import
 
-import os
-import numpy as np
-
 from .otb import ExperimentOTB
 from ..datasets import TrackingNet
-from ..utils.metrics import rect_iou, center_error
 
 
 class ExperimentTrackingNet(ExperimentOTB):

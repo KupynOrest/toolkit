@@ -75,8 +75,12 @@ class VOT(object):
                 raise Exception('Sequence {} not found.'.format(index))
             index = self.seq_names.index(index)
 
+        if os.path.exists(os.path.join(self.seq_dirs[index], 'color')):
+            img_folder = os.path.join(self.seq_dirs[index], 'color')
+        else:
+            img_folder = self.seq_dirs[index]
         img_files = sorted(glob.glob(
-            os.path.join(self.seq_dirs[index], 'color', '*.jpg')))
+            os.path.join(img_folder, '*.jpg')))
         anno = np.loadtxt(self.anno_files[index], delimiter=',')
         assert len(img_files) == len(anno), (len(img_files), len(anno))
         assert anno.shape[1] in [4, 8]
